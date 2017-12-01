@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>G-Assistant effect</title>
+	<script src="E:\Dev\poike-ext\jquery.js"></script>
+	<style type="text/css">
+		html, body {
+			background-color: black
+		}
+		.gass {
+			height: 300px;
+			width: 300px;
+			background-color: black;
+			position: relative;
+			overflow: hidden;
+			color: white;
+		}
+
+		/*Bottom to top risers*/
+		.gass ._top1 {
+			position: absolute;
+			width: 4px;
+			height: 100%;
+			bottom: -100%;
+			left: 0;
+			background: linear-gradient(white, black);
+		}
+		.top1 {
+			animation-name: _top;
+			animation-duration: 1s;
+			animation-timing-function: linear;
+			animation-delay: 0.25s;
+		}
+
+		.gass ._top2 {
+			position: absolute;
+			width: 4px;
+			height: 100%;
+			bottom: -100%;
+			right: 0;
+			background: linear-gradient(white, black);
+		}
+		.top2 {
+			animation-name: _top;
+			animation-duration: 1s;
+			animation-timing-function: linear;
+			animation-delay: 0.25s;
+		}
+
+		@keyframes _top {
+			0% {height: 100%; bottom: -100%;}
+			50% {height: 100%; bottom: 0;}
+			100% {height: 100%; bottom: 100%;}
+		}
+
+		/*Mid to sideway risers*/
+		.gass ._ml {
+			position: absolute;
+			height: 4px;
+			background: linear-gradient(to right, white, black);
+			bottom: 0;
+			right: 50%;
+			width: 0;
+		}
+		.ml {
+			animation-name: _ml;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			animation-timing-function: linear;
+		}
+		@keyframes _ml {
+			0% { width:0; right: 50%;}
+			50% { width:100%; right: 75%;}
+			100% { width: 100%; right: 100%; }
+		}
+
+		.gass ._mr {
+			position: absolute;
+			height: 4px;
+			background: linear-gradient(to left, white, black);
+			bottom: 0;
+			left: 50%;
+			width: 0;
+		}
+		.mr {
+			animation-name: _mr;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			animation-timing-function: linear;
+		}
+		@keyframes _mr {
+			0% { width:0; left: 50%;}
+			50% { width:100%; left: 75%;}
+			100% { width: 100%; left: 100%; }
+		}
+
+		/*sideways to mid risers*/
+		.gass ._lm {
+			position: absolute;
+			height: 4px;
+			background: linear-gradient(to left, white, black);
+			top: 0;
+			right: 100%;
+			width: 100%;
+		}
+		.lm {
+			animation-name: _lm;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			animation-timing-function: linear;
+			animation-delay: 0.75s;
+		}
+		@keyframes _lm {
+			0% { width:100%; right: 100%;}
+			50% { width:100%; right: 50%;}
+			100% { width: 0; right: 50%; }
+		}
+
+		.gass ._rm {
+			position: absolute;
+			height: 4px;
+			background: linear-gradient(to right, white, black);
+			top: 0;
+			left: 100%;
+			width: 100%;
+		}
+		.rm {
+			animation-name: _rm;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			animation-timing-function: linear;
+			animation-delay: 0.75s;
+		}
+		@keyframes _rm {
+			0% { width:100%; ; left: 100%;}
+			50% { width:100%; left: 50%;}
+			100% { width: 0; left: 50%; }
+		}
+	</style>
+</head>
+	<body>
+		<div class="gass">
+			This is some div
+			<div class="riser _rm"></div>
+			<div class="riser _lm"></div>
+			<div class="riser _top1"></div>
+			<div class="riser _top2"></div>
+			<div class="riser _mr"></div>
+			<div class="riser _ml"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$('.gass').on('click',function(){
+			console.log('Function fired');
+			$('.gass ._ml').toggleClass('ml');
+			$('.gass ._mr').toggleClass('mr');
+			$('.gass ._lm').toggleClass('lm');
+			$('.gass ._rm').toggleClass('rm');
+			$('.gass ._top1').toggleClass('top1');
+			$('.gass ._top2').toggleClass('top2');
+		});
+	</script>
+</html>
